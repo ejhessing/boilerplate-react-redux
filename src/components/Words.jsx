@@ -2,13 +2,20 @@ import React, {PropTypes} from 'react'
 
 import Word from './Word'
 
-const Words = ({words}) => (
+const Words = ({words, del}) => (
   <div>
     {words.map(word =>
-      <Word
-        key={word.id}
-        {...word}
-        />
+      <div key={word.id}>
+        <Word
+          {...word}
+          />
+        <button name={word.id} onClick={evt => {
+            del(evt.target.name)
+          }}>
+          Del
+        </button>
+      </div>
+
     )}
   </div>
 )
